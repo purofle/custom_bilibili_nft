@@ -73,7 +73,7 @@ def tv_login():
     qrcode_url = data["url"]
     auth_code = data["auth_code"]
 
-    print("请扫描运行目录内的 qr.png 或将下面的链接复制到哔哩哔哩内打开")
+    print("请扫描二维码或将下面的链接复制到哔哩哔哩内打开")
     print(qrcode_url)
     qr = qrcode.QRCode()
     qr.add_data(qrcode_url)
