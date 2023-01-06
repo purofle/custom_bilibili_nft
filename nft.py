@@ -66,7 +66,7 @@ def tv_qr_login(auth_code: str):
         "local_id": 0,
         "ts": int(time.time())
     }).signed
-    return requests.post(url, params=params).json()
+    return requests.post(url, params=params)
 
 def tv_login():
     data = get_auth_code()
@@ -86,13 +86,16 @@ def tv_login():
     uid = 0
 
     while access_token == "":
-        login_data = tv_qr_login(auth_code)
+        try:
+            login_data = tv_qr_login(auth_code).json()
+        except Exception as e:
+            print(f"炸了 {e}")
         print(login_data)
         if not login_data["data"] is None:
             access_token = login_data["data"]["access_token"]
             uid = login_data["data"]["mid"]
             break
-        time.sleep(1)
+        time.sleep(1.5)
 
     print(access_token)
     print(uid)
