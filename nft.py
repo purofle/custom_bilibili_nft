@@ -104,7 +104,7 @@ def tv_login():
     UID = uid
     ACCESS_KEY = access_token
 
-if UID == 0 and ACCESS_KEY == 0:
+if UID == 0 and ACCESS_KEY == "":
 	tv_login()
 
 
